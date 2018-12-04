@@ -1,0 +1,74 @@
+[global_config]
+  dbus = True
+  enabled_plugins = LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+  inactive_color_offset = 0.65
+  tab_position = bottom
+[keybindings]
+  broadcast_all = None
+  broadcast_group = None
+  broadcast_off = None
+  close_term = None
+  close_window = None
+  edit_window_title = None
+  go_down = <Super>Down
+  go_left = <Super>Left
+  go_next = None
+  go_prev = None
+  go_right = <Super>Right
+  go_up = <Super>Up
+  group_all = None
+  group_tab = None
+  help = None
+  hide_window = None
+  insert_number = None
+  insert_padded = None
+  layout_launcher = None
+  new_terminator = None
+  new_window = None
+  next_tab = <Primary>Tab
+  prev_tab = <Primary><Shift>Tab
+  reset = None
+  reset_clear = <Primary>l
+  resize_down = None
+  resize_left = None
+  resize_right = None
+  resize_up = None
+  rotate_ccw = None
+  rotate_cw = None
+  scaled_zoom = None
+  split_horiz = <Alt><Super>Down
+  split_vert = <Alt><Super>Right
+  toggle_scrollbar = None
+  toggle_zoom = <Super>z
+  ungroup_all = None
+  ungroup_tab = None
+[layouts]
+  [[default]]
+    [[[child0]]]
+      fullscreen = False
+      last_active_term = f912e3fe-cd2d-47b3-aaf2-37adec6a0db5
+      last_active_window = True
+      maximised = False
+      order = 0
+      parent = ""
+      position = 139:77
+      size = 2146, 1260
+      title = root@Hitomi: ~
+      type = Window
+    [[[terminal1]]]
+      order = 0
+      parent = child0
+      profile = default
+      type = Terminal
+      uuid = f912e3fe-cd2d-47b3-aaf2-37adec6a0db5
+[plugins]
+[profiles]
+  [[default]]
+    background_darkness = 0.94
+    background_image = None
+    font = DejaVu Sans Mono 11
+    scrollback_infinite = True
+    show_titlebar = False
+    urgent_bell = True
+    use_system_font = False
+    visible_bell = True
