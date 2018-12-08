@@ -1,23 +1,36 @@
+$include /etc/inputrc
+
+# Prevent audible alerts
+set bell-style visible
+
+# Allow UTF-8 input and output, instead of showing stuff like $'\0123\0456'
+set input-meta on
+set output-meta on
+set convert-meta off
+
+# Visualize parenthesis matching
+set blink-matching-paren on
+
 # Make Tab autocomplete regardless of filename case
 set completion-ignore-case on
+
 # Dashes (-) and underscores (_) are deemed to be the same
 set completion-map-case on
 
 # List all matches in case multiple possible completions are possible
-set show-all-if-ambiguous on
-set completion-prefix-display-length 3
+set show-all-if-ambiguous off
+set completion-prefix-display-length 10
+set colored-completion-prefix on
 
-# If there are more than 40 possible completions for a word, ask to show them all
-set completion-query-items 40
+# Show prefix in menu completion mode
+set menu-complete-display-prefix on
+
+# If there are more than 200 possible completions for a word, ask to show them all
+set completion-query-items 200
 
 # Immediately add a trailing slash when autocompleting symlinks to directories
 set mark-directories on
 set mark-symlinked-directories on
-
-# Use the text that has already been typed as the prefix for searching through
-# commands (i.e. more intelligent Up/Down behavior)
-"\e[B": history-search-forward
-"\e[A": history-search-backward
 
 # Do not autocomplete hidden files unless the pattern explicitly begins with a dot
 set match-hidden-files off
@@ -36,10 +49,45 @@ set colored-stats on
 # Readline used by Bash 4.)
 set skip-completed-text on
 
-# Allow UTF-8 input and output, instead of showing stuff like $'\0123\0456'
-set input-meta on
-set output-meta on
-set convert-meta off
+# Use the text that has already been typed as the prefix for searching through
+# commands (i.e. more intelligent Up/Down behavior)
+"\e[B": history-search-forward
+"\e[A": history-search-backward
 
 # Use Alt/Meta + Delete to delete the preceding word
 "\e[3;3~": kill-word
+
+# Use Shift + Delete to delete the preceding shell token
+"\e[3;2~": shell-backward-kill-word
+
+$if mode=emacs
+    # Home/End mapping
+    "\e[1~": beginning-of-line
+    "\e[H": beginning-of-line
+    "\e[4~": end-of-line
+    "\e[F": end-of-line
+
+    # Ctrl-[LR]arrow mapping - token movement
+    "\e[1;5C": forward-word
+    "\e[1;5D": backward-word
+    "\e[5C": forward-word
+    "\e[5D": backward-word
+    "\e\e[C": forward-word
+    "\e\e[D": backward-word
+
+    # Shift-[LR]arrow mapping - shell token movement
+    "\e[1;2D": shell-backward-word
+    "\e[1;2C": shell-forward-word
+
+    # Shift-[UD]arrow mapping - menu completion
+    "\e[1;2A": menu-complete
+    "\e[1;2B": menu-complete-backward
+
+    "\e\C-k": kill-whole-line
+
+    $if Bash
+        # Use Alt-s to prefix a command with sudo
+        "\es": '\C-asudo \C-e'
+    $endif
+
+$endif
