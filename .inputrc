@@ -85,9 +85,4 @@ $if mode=emacs
 
     "\e\C-k": kill-whole-line
 
-    $if Bash
-        # Use Alt-s to prefix a command with sudo
-        "\es": '\C-asudo \C-e'
-    $endif
-
 $endif
